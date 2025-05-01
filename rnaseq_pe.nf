@@ -56,7 +56,8 @@ log.info """\
         ▹ Quality Assessment
            - RSeQC: Assess strandedness, alignment quality, and read distribution.
 
-        ▹ Reporting
+        ▹ Results Summary
+           - RSEM Merge: Combine gene and isoform expression estimates across all samples.
            - MultiQC: Summarize QC metrics into a single HTML report.
 
     --------------------------------------------------------------------------------------------------
@@ -142,8 +143,7 @@ workflow {
             RSEQC_STRANDEDNESS.out.infer_raw,
             RSEQC_BAMSTAT.out.bamstat_report,
             RSEQC_DISTRIBUTION.out.read_distribution,
-            RSEM_QUANT.out.gene_result,
-            RSEM_QUANT.out.isoform_result
+            RSEM_QUANT.out.cnt_report
         ).collect(),
         params.report_id
     )

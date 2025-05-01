@@ -13,6 +13,7 @@ process RSEM_QUANT {
     output:
     path "*.genes.results", emit: gene_result
     path "*.isoforms.results", emit: isoform_result
+    path "*.cnt", emit: cnt_report
 
     script:
     def prefix = transcriptome_bam.simpleName
@@ -25,5 +26,7 @@ process RSEM_QUANT {
       ${transcriptome_bam} \\
       ${rsem_index}/rsem_ref \\
       ${prefix}
+    
+    cp ${prefix}.stat/${prefix}.cnt ${prefix}.cnt
     """
 }
