@@ -1,8 +1,9 @@
 #!/usr/bin/env nextflow
 
 process FASTQC_SE {
-
-    container "community.wave.seqera.io/library/fastqc:0.12.1--af7a5314d5015c29"
+    label 'process_single'
+    
+    container 'containers/fastqc_0.12.1.sif'
     publishDir "results/fastqc", mode: 'copy'
 
     input:

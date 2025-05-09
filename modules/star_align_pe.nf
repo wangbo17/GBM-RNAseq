@@ -1,8 +1,9 @@
 #!/usr/bin/env nextflow
 
 process STAR_ALIGN_PE {
-
-    container "community.wave.seqera.io/library/star:2.7.11b--84fcc19fdfab53a4"
+    label 'process_high'
+    
+    container "containers/star_2.7.11b.sif"
     publishDir "results/star_align", mode: 'copy'
 
     input:
@@ -23,7 +24,7 @@ process STAR_ALIGN_PE {
     mkdir star_index
     tar -xzf $index_zip -C star_index
 
-    STAR --runThreadN 6 --runMode alignReads \
+    STAR --runThreadN $task.cpus --runMode alignReads \
          --genomeDir star_index \
          --readFilesIn ${read1} ${read2} \
          --readFilesCommand zcat \

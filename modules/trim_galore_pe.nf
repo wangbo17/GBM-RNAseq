@@ -1,8 +1,9 @@
 #!/usr/bin/env nextflow
 
 process TRIM_GALORE_PE {
-
-    container "community.wave.seqera.io/library/trim-galore:0.6.10--bc38c9238980c80e"
+    label 'process_medium'
+    
+    container "containers/trim-galore_0.6.10.sif"
     publishDir "results/trim_galore", mode: 'copy'
 
     input:
@@ -15,6 +16,13 @@ process TRIM_GALORE_PE {
     path "*_val_2_fastqc.{zip,html}", emit: fastqc_reports_2
 
     script:
+    def cores = 1
+    if (task.cpus) {
+        cores = (task.cpus as int) - 1
+        if (cores < 1) cores = 1
+        if (cores > 8) cores = 8
+    }
+
     """
     read1_name=\$(basename ${reads[0]})
     read2_name=\$(basename ${reads[1]})
@@ -30,6 +38,6 @@ process TRIM_GALORE_PE {
         ln -s \$read2_name \$target2
     fi
 
-    trim_galore --fastqc --paired \$target1 \$target2 --basename ${sample_id}
+    trim_galore --cores $cores --fastqc --paired \$target1 \$target2 --basename ${sample_id}
     """
 }

@@ -1,8 +1,9 @@
 #!/usr/bin/env nextflow
 
 process SORTMERNA_PE {
-
-    container './containers/sortmerna_4.3.7--5e99cfae38f7f1eb.sif'
+    label 'process_high'
+    
+    container 'containers/sortmerna_4.3.7.sif'
     publishDir "results/sortmerna", mode: 'copy'
 
     input:
@@ -25,7 +26,7 @@ process SORTMERNA_PE {
         --paired_in \\
         --aligned rRNA_reads --fastx --other non_rRNA_reads --out2 \\
         --workdir . \\
-        --threads ${task.cpus}
+        --threads $task.cpus
 
     mv non_rRNA_reads_fwd.f*q.gz ${prefix}_1.non_rRNA.fastq.gz
     mv non_rRNA_reads_rev.f*q.gz ${prefix}_2.non_rRNA.fastq.gz

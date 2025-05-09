@@ -1,8 +1,9 @@
 #!/usr/bin/env nextflow
 
 process RSEQC_BAMSTAT {
-
-    container "community.wave.seqera.io/library/rseqc:5.0.4--8c855f0b915334d2"
+    label 'process_low'
+    
+    container 'containers/rseqc_5.0.4_r-base_4.4.3.sif'
     publishDir "results/rseqc", mode: 'copy'
 
     input:

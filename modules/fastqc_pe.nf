@@ -1,8 +1,9 @@
 #!/usr/bin/env nextflow
 
 process FASTQC_PE {
+    label 'process_single'
 
-    container "community.wave.seqera.io/library/fastqc:0.12.1--af7a5314d5015c29"
+    container 'containers/fastqc_0.12.1.sif'
     publishDir "results/fastqc", mode: 'copy'
 
     input:
@@ -13,6 +14,9 @@ process FASTQC_PE {
     path "*_fastqc.html", emit: html
 
     script:
+    def memory_in_mb = MemoryUnit.of("${task.memory}").toUnit('MB') / task.cpus
+    def fastqc_memory = memory_in_mb > 10000 ? 10000 : (memory_in_mb < 100 ? 100 : memory_in_mb)
+
     """
     read1_name=\$(basename ${reads[0]})
     read2_name=\$(basename ${reads[1]})
@@ -28,6 +32,6 @@ process FASTQC_PE {
         ln -s \$read2_name \$target2
     fi
 
-    fastqc \$target1 \$target2
+    fastqc --threads $task.cpus --memory $fastqc_memory \$target1 \$target2
     """
 }

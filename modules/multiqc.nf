@@ -1,8 +1,9 @@
 #!/usr/bin/env nextflow
 
 process MULTIQC {
-
-    container "community.wave.seqera.io/library/multiqc:1.28--d466e41d58d6d704"
+    label 'process_single'
+    
+    container 'containers/multiqc_1.28.sif'
     publishDir "results/multiqc", mode: 'copy'
 
     input:

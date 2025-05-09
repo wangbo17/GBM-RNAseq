@@ -1,5 +1,8 @@
 #!/usr/bin/env Rscript
 
+library(readr)
+library(dplyr)
+
 args <- commandArgs(trailingOnly = TRUE)
 
 genes_start <- which(args == "--genes") + 1
@@ -10,9 +13,6 @@ isoforms_end <- length(args)
 
 gene_files <- args[genes_start:genes_end]
 isoform_files <- args[isoforms_start:isoforms_end]
-
-library(readr)
-library(dplyr)
 
 read_matrix <- function(files, id_col) {
   ids <- NULL
@@ -32,16 +32,28 @@ read_matrix <- function(files, id_col) {
   }
 
   list(
-    expected_count = as.data.frame(cbind(!!id_col := ids, do.call(cbind, expected_count_list))),
-    TPM            = as.data.frame(cbind(!!id_col := ids, do.call(cbind, TPM_list))),
-    FPKM           = as.data.frame(cbind(!!id_col := ids, do.call(cbind, FPKM_list)))
+    expected_count = {
+      mat <- as.data.frame(cbind(ids, do.call(cbind, expected_count_list)))
+      names(mat)[1] <- id_col
+      mat
+    },
+    TPM = {
+      mat <- as.data.frame(cbind(ids, do.call(cbind, TPM_list)))
+      names(mat)[1] <- id_col
+      mat
+    },
+    FPKM = {
+      mat <- as.data.frame(cbind(ids, do.call(cbind, FPKM_list)))
+      names(mat)[1] <- id_col
+      mat
+    }
   )
 }
 
 write_matrix <- function(matrix_list, prefix) {
   write_tsv(matrix_list$expected_count, paste0(prefix, "_expected_count_matrix.tsv"))
-  write_tsv(matrix_list$TPM,            paste0(prefix, "_TPM_matrix.tsv"))
-  write_tsv(matrix_list$FPKM,           paste0(prefix, "_FPKM_matrix.tsv"))
+  write_tsv(matrix_list$TPM, paste0(prefix, "_TPM_matrix.tsv"))
+  write_tsv(matrix_list$FPKM, paste0(prefix, "_FPKM_matrix.tsv"))
 }
 
 write_matrix(read_matrix(gene_files, "gene_id"), "gene")

@@ -1,8 +1,9 @@
 #!/usr/bin/env nextflow
 
-process RSEM_QUANT {
-
-    container "community.wave.seqera.io/library/rsem_star:8a0fe0c5e7aa01d5"
+process RSEM_QUANT_PE {
+    label 'process_medium'
+    
+    container 'containers/rsem_1.3.3_star_2.7.11b.sif'
     publishDir "results/rsem_expression", mode: 'copy'
 
     input:
@@ -20,8 +21,9 @@ process RSEM_QUANT {
                 .replaceFirst(/_Aligned\.toTranscriptome\.out$/, '')
                 
     """
-    rsem-calculate-expression -p 8 \\
+    rsem-calculate-expression --num-threads $task.cpus \\
       --alignments \\
+      --paired-end \\
       --strandedness ${strandedness} \\
       ${transcriptome_bam} \\
       ${rsem_index}/rsem_ref \\

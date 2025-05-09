@@ -1,9 +1,10 @@
 #!/usr/bin/env nextflow
 
 process RSEM_MERGE {
-
+    label 'process_low'
+    
+    container 'containers/r-readr_2.1.5_r-dplyr_1.1.4.sif'
     publishDir "results/rsem_expression", mode: 'copy'
-    container 'community.wave.seqera.io/library/r-dplyr_reader:2b13f96b46d7a708'
 
     input:
     path gene_results

@@ -23,8 +23,8 @@ include { MULTIQC } from './modules/multiqc.nf'
 
 // Primary input
 params.input_csv = "data/single-end.csv"
-params.fasta = "data/reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa"
-params.gtf = "data/reference/Homo_sapiens.GRCh38.113.gtf"
+params.fasta = "data/reference/genome.fa"
+params.gtf = "data/reference/genes.gtf"
 params.report_id = "all_single-end"
 
 log.info """\

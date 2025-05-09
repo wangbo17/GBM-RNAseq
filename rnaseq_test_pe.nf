@@ -2,18 +2,18 @@
 
 // Module INCLUDE statements
 include { PREPARE_GTF } from './modules/prepare_gtf.nf'
-include { FASTQC_SE } from './modules/fastqc_se.nf'
-include { TRIM_GALORE_SE } from './modules/trim_galore_se.nf'
-include { SORTMERNA_SE } from './modules/sortmerna_se.nf'
+include { FASTQC_PE } from './modules/fastqc_pe.nf'
+include { TRIM_GALORE_PE } from './modules/trim_galore_pe.nf'
+include { SORTMERNA_PE } from './modules/sortmerna_pe.nf'
 include { STAR_INDEX } from './modules/star_index.nf'
-include { STAR_ALIGN_SE } from './modules/star_align_se.nf'
-include { RSEQC_STRANDEDNESS_SE } from './modules/rseqc_strandedness_se.nf'
+include { STAR_ALIGN_PE } from './modules/star_align_pe.nf'
+include { RSEQC_STRANDEDNESS_PE } from './modules/rseqc_strandedness_pe.nf'
 include { RSEQC_BAMSTAT } from './modules/rseqc_bamstat.nf'
 include { RSEQC_DISTRIBUTION } from './modules/rseqc_distribution.nf'
 include { RSEQC_COVERAGE } from './modules/rseqc_coverage.nf'
 include { RSEQC_DUPLICATION } from './modules/rseqc_duplication.nf'
 include { RSEM_REFERENCE } from './modules/rsem_reference.nf'
-include { RSEM_QUANT_SE } from './modules/rsem_quant_se.nf'
+include { RSEM_QUANT_PE } from './modules/rsem_quant_pe.nf'
 include { RSEM_MERGE } from './modules/rsem_merge.nf'
 include { MULTIQC } from './modules/multiqc.nf'
 
@@ -22,10 +22,10 @@ include { MULTIQC } from './modules/multiqc.nf'
  */
 
 // Primary input
-params.input_csv = "data/single-end.csv"
-params.fasta = "data/reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa"
-params.gtf = "data/reference/Homo_sapiens.GRCh38.113.gtf"
-params.report_id = "all_single-end"
+params.input_csv = "data/paired-end.csv"
+params.fasta = "data/reference/genome.fa"
+params.gtf = "data/reference/genes.gtf"
+params.report_id = "all_paired-end"
 
 log.info """\
 ==================================================================================================
@@ -80,30 +80,32 @@ log.info """\
 """
 .stripIndent(true)
 
+
 workflow {
 
     // Create input channel
     read_ch = Channel.fromPath(params.input_csv)
         .splitCsv(header:true)
-        .map { row -> tuple(row.sample_id, file(row.fastq_path)) }
+        .map { row -> tuple(row.sample_id, [file(row.fastq_1), file(row.fastq_2)]) }
 
     // Call processes
     PREPARE_GTF(file(params.gtf))
 
-    FASTQC_SE(read_ch)
+    FASTQC_PE(read_ch)
 
-    TRIM_GALORE_SE(read_ch)
+    TRIM_GALORE_PE(read_ch)
 
-    SORTMERNA_SE(
-        TRIM_GALORE_SE.out.trimmed_reads.map { read ->
+    SORTMERNA_PE(
+        TRIM_GALORE_PE.out.trimmed_reads.map { read1, read2 ->
             tuple(
-                read,
-                [
-                    file("data/rrna_db/rfam-5.8s-database-id98.fasta"),
-                    file("data/rrna_db/rfam-5s-database-id98.fasta"),
-                    file("data/rrna_db/silva-euk-18s-id95.fasta"),
-                    file("data/rrna_db/silva-euk-28s-id98.fasta")
-                ]
+            read1,
+            read2,
+            [
+                file("data/rrna_db/rfam-5.8s-database-id98.fasta"),
+                file("data/rrna_db/rfam-5s-database-id98.fasta"),
+                file("data/rrna_db/silva-euk-18s-id95.fasta"),
+                file("data/rrna_db/silva-euk-28s-id98.fasta")
+            ]
             )
         }
     )
@@ -114,40 +116,42 @@ workflow {
         PREPARE_GTF.out.filtered_gtf
     )
 
-    STAR_ALIGN_SE(SORTMERNA_SE.out.cleaned_reads, STAR_INDEX.out.index_zip)
+    STAR_ALIGN_PE(SORTMERNA_PE.out.cleaned_reads, STAR_INDEX.out.index_zip)
 
-    RSEQC_STRANDEDNESS_SE(STAR_ALIGN_SE.out.genome_bam, PREPARE_GTF.out.filtered_bed)
-    RSEQC_BAMSTAT(STAR_ALIGN_SE.out.genome_bam)
-    RSEQC_DISTRIBUTION(STAR_ALIGN_SE.out.genome_bam, PREPARE_GTF.out.filtered_bed)
-    RSEQC_COVERAGE(STAR_ALIGN_SE.out.genome_bam, PREPARE_GTF.out.filtered_bed)
-    RSEQC_DUPLICATION(STAR_ALIGN_SE.out.genome_bam)
+    RSEQC_STRANDEDNESS_PE(STAR_ALIGN_PE.out.genome_bam, PREPARE_GTF.out.filtered_bed)
+    RSEQC_BAMSTAT(STAR_ALIGN_PE.out.genome_bam)
+    RSEQC_DISTRIBUTION(STAR_ALIGN_PE.out.genome_bam, PREPARE_GTF.out.filtered_bed)
+    RSEQC_COVERAGE(STAR_ALIGN_PE.out.genome_bam, PREPARE_GTF.out.filtered_bed)
+    RSEQC_DUPLICATION(STAR_ALIGN_PE.out.genome_bam)
 
     RSEM_REFERENCE(file(params.fasta), PREPARE_GTF.out.filtered_gtf)
-    RSEM_QUANT_SE(
-        STAR_ALIGN_SE.out.transcriptome_bam,
+
+    RSEM_QUANT_PE(
+        STAR_ALIGN_PE.out.transcriptome_bam,
         RSEM_REFERENCE.out.rsem_rindex,
-        RSEQC_STRANDEDNESS_SE.out.strandedness_report.map { file -> file.text.trim() }
+        RSEQC_STRANDEDNESS_PE.out.strandedness_report.map { file -> file.text.trim() }
     )
 
     RSEM_MERGE(
-        RSEM_QUANT_SE.out.gene_result.collect(),
-        RSEM_QUANT_SE.out.isoform_result.collect()
+        RSEM_QUANT_PE.out.gene_result.collect(),
+        RSEM_QUANT_PE.out.isoform_result.collect()
     )
 
     MULTIQC(
-        FASTQC_SE.out.zip.mix(
-            FASTQC_SE.out.html,
-            TRIM_GALORE_SE.out.trimming_reports,
-            TRIM_GALORE_SE.out.fastqc_reports,
-            SORTMERNA_SE.out.logs,
-            STAR_ALIGN_SE.out.log,
-            RSEQC_STRANDEDNESS_SE.out.infer_raw,
+        FASTQC_PE.out.zip.mix(
+            FASTQC_PE.out.html,
+            TRIM_GALORE_PE.out.trimming_reports,
+            TRIM_GALORE_PE.out.fastqc_reports_1,
+            TRIM_GALORE_PE.out.fastqc_reports_2,
+            SORTMERNA_PE.out.logs,
+            STAR_ALIGN_PE.out.log,
+            RSEQC_STRANDEDNESS_PE.out.infer_raw,
             RSEQC_BAMSTAT.out.bamstat_report,
             RSEQC_DISTRIBUTION.out.read_distribution,
             RSEQC_COVERAGE.out.coverage_report,
             RSEQC_DUPLICATION.out.pos_dup_rate,
             RSEQC_DUPLICATION.out.seq_dup_rate,
-            RSEM_QUANT_SE.out.cnt_report
+            RSEM_QUANT_PE.out.cnt_report
         ).collect(),
         params.report_id
     )
