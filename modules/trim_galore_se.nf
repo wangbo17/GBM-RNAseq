@@ -14,6 +14,7 @@ process TRIM_GALORE_SE {
     path "*_trimming_report.txt", emit: trimming_reports
     path "*_trimmed_fastqc.{zip,html}", emit: fastqc_reports
     
+    script:
     def cores = 1
     if (task.cpus) {
         cores = (task.cpus as int) - 1
@@ -21,7 +22,6 @@ process TRIM_GALORE_SE {
         if (cores > 8) cores = 8
     }
 
-    script:
     """
     read_name=\$(basename ${reads})
     target=${sample_id}_raw.fastq.gz

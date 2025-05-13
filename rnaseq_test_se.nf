@@ -10,7 +10,6 @@ include { STAR_ALIGN_SE } from './modules/star_align_se.nf'
 include { RSEQC_STRANDEDNESS_SE } from './modules/rseqc_strandedness_se.nf'
 include { RSEQC_BAMSTAT } from './modules/rseqc_bamstat.nf'
 include { RSEQC_DISTRIBUTION } from './modules/rseqc_distribution.nf'
-include { RSEQC_COVERAGE } from './modules/rseqc_coverage.nf'
 include { RSEQC_DUPLICATION } from './modules/rseqc_duplication.nf'
 include { RSEM_REFERENCE } from './modules/rsem_reference.nf'
 include { RSEM_QUANT_SE } from './modules/rsem_quant_se.nf'
@@ -116,10 +115,9 @@ workflow {
 
     STAR_ALIGN_SE(SORTMERNA_SE.out.cleaned_reads, STAR_INDEX.out.index_zip)
 
-    RSEQC_STRANDEDNESS_SE(STAR_ALIGN_SE.out.genome_bam, PREPARE_GTF.out.filtered_bed)
+    RSEQC_STRANDEDNESS_SE(STAR_ALIGN_SE.out.genome_bam, PREPARE_GTF.out.filtered_transcript_bed)
     RSEQC_BAMSTAT(STAR_ALIGN_SE.out.genome_bam)
-    RSEQC_DISTRIBUTION(STAR_ALIGN_SE.out.genome_bam, PREPARE_GTF.out.filtered_bed)
-    RSEQC_COVERAGE(STAR_ALIGN_SE.out.genome_bam, PREPARE_GTF.out.filtered_bed)
+    RSEQC_DISTRIBUTION(STAR_ALIGN_SE.out.genome_bam, PREPARE_GTF.out.filtered_transcript_bed)
     RSEQC_DUPLICATION(STAR_ALIGN_SE.out.genome_bam)
 
     RSEM_REFERENCE(file(params.fasta), PREPARE_GTF.out.filtered_gtf)
@@ -144,7 +142,6 @@ workflow {
             RSEQC_STRANDEDNESS_SE.out.infer_raw,
             RSEQC_BAMSTAT.out.bamstat_report,
             RSEQC_DISTRIBUTION.out.read_distribution,
-            RSEQC_COVERAGE.out.coverage_report,
             RSEQC_DUPLICATION.out.pos_dup_rate,
             RSEQC_DUPLICATION.out.seq_dup_rate,
             RSEM_QUANT_SE.out.cnt_report

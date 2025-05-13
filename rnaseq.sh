@@ -11,4 +11,4 @@
 # ==============================
 # Run Pipeline
 # ==============================
-nextflow run rnaseq_pe.nf --input_csv data/paired-end.csv -resume
+nextflow run rnaseq_pe.nf -resume

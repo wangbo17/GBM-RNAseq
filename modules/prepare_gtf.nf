@@ -3,13 +3,15 @@
 process PREPARE_GTF {
     label 'process_low'
 
+    container 'containers/genepredtobed-gtftogenepred_469.sif'
+
     input:
     path gtf_file
 
     output:
     path "excluded.gtf", emit: excluded_gtf
     path "filtered.gtf", emit: filtered_gtf
-    path "filtered.bed", emit: filtered_bed
+    path "filtered_transcript.bed", emit: filtered_transcript_bed
     path "gtf_report.txt", emit: gtf_report
 
     script:
@@ -37,12 +39,13 @@ process PREPARE_GTF {
     # 5. Lines not meeting the criteria are written to excluded.gtf for auditing.
     #
     # Outputs:
-    # - filtered.gtf:     Final cleaned GTF used for STAR and RSEM.
-    # - filtered.bed:     BED file derived from filtered.gtf, used for RSeQC.
-    # - excluded.gtf:     GTF entries filtered out due to undesired biotypes.
-    # - gtf_report.txt:   Summary of feature types and biotype distributions (before and after filtering).
+    # - filtered.gtf:              Final cleaned GTF used for STAR and RSEM.
+    # - filtered_transcript.bed:   Transcript-level BED for geneBody_coverage.py and infer_experiment.py
+    # - excluded.gtf:              GTF entries filtered out due to undesired biotypes.
+    # - gtf_report.txt:            Summary of feature types and biotype distributions.
 
-    awk '
+    # Step 1: Extract keep transcript_ids and gene_ids
+    gawk '
     BEGIN {
       FS = OFS = "\t";
       keep["protein_coding"];
@@ -51,18 +54,15 @@ process PREPARE_GTF {
       keep["protein_coding_CDS_not_defined"];
       keep["protein_coding_LoF"];
       keep["translated_processed_pseudogene"];
-
       keep["processed_pseudogene"];
       keep["transcribed_unitary_pseudogene"];
       keep["transcribed_processed_pseudogene"];
       keep["transcribed_unprocessed_pseudogene"];
       keep["unprocessed_pseudogene"];
       keep["unitary_pseudogene"];
-
       keep["IG_V_gene"]; keep["IG_D_gene"]; keep["IG_J_gene"]; keep["IG_C_gene"];
       keep["IG_V_pseudogene"]; keep["IG_J_pseudogene"]; keep["IG_C_pseudogene"];
       keep["IG_pseudogene"];
-
       keep["TR_V_gene"]; keep["TR_D_gene"]; keep["TR_J_gene"]; keep["TR_C_gene"];
       keep["TR_V_pseudogene"]; keep["TR_J_pseudogene"];
     }
@@ -80,7 +80,8 @@ process PREPARE_GTF {
     sort -u keep.transcript_ids.txt > tmp.tids && mv tmp.tids keep.transcript_ids.txt
     sort -u keep.gene_ids.txt > tmp.gids && mv tmp.gids keep.gene_ids.txt
 
-    awk '
+    # Step 2: Filter GTF
+    gawk '
     BEGIN { FS = OFS = "\t" }
     ARGIND == 1 { keep_tid[\$1]; next }
     ARGIND == 2 { keep_gid[\$1]; next }
@@ -99,27 +100,11 @@ process PREPARE_GTF {
     }
     ' keep.transcript_ids.txt keep.gene_ids.txt ${gtf_file}
 
-    awk '
-    \$3 == "exon" {
-        print \$1"\t"(\$4-1)"\t"\$5"\texon\t0\t"\$7"\t"\$4"\t"\$5"\t0\t1\t"(\$5-\$4+1)"\t0"
-    }
-    \$3 == "CDS" {
-        print \$1"\t"(\$4-1)"\t"\$5"\tCDS\t0\t"\$7"\t"\$4"\t"\$5"\t0\t1\t"(\$5-\$4+1)"\t0"
-    }
-    \$3 == "five_prime_utr" {
-        print \$1"\t"(\$4-1)"\t"\$5"\tfive_prime_utr\t0\t"\$7"\t"\$4"\t"\$5"\t0\t1\t"(\$5-\$4+1)"\t0"
-    }
-    \$3 == "three_prime_utr" {
-        print \$1"\t"(\$4-1)"\t"\$5"\tthree_prime_utr\t0\t"\$7"\t"\$4"\t"\$5"\t0\t1\t"(\$5-\$4+1)"\t0"
-    }
-    \$3 == "start_codon" {
-        print \$1"\t"(\$4-1)"\t"\$5"\tstart_codon\t0\t"\$7"\t"\$4"\t"\$5"\t0\t1\t"(\$5-\$4+1)"\t0"
-    }
-    \$3 == "stop_codon" {
-        print \$1"\t"(\$4-1)"\t"\$5"\tstop_codon\t0\t"\$7"\t"\$4"\t"\$5"\t0\t1\t"(\$5-\$4+1)"\t0"
-    }
-    ' filtered.gtf > filtered.bed
+    # Step 3: Generate true BED12 for transcript regions (used in geneBody_coverage.py)
+    gtfToGenePred filtered.gtf filtered.genepred
+    genePredToBed filtered.genepred filtered_transcript.bed
 
+    # Step 4: GTF summary report
     {
       echo "===== FILTERED GTF Feature Type Distribution ====="
       cut -f3 filtered.gtf | sort | uniq -c | sort -nr
