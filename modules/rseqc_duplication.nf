@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
 process RSEQC_DUPLICATION {
-    label 'process_low'
+    label 'process_medium'
 
     container 'containers/rseqc_5.0.4_r-base_4.4.3.sif'
     publishDir "results/rseqc", mode: 'copy'

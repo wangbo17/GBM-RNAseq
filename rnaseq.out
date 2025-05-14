@@ -1,0 +1,2745 @@
+## Hosts assigned to job 7435328.1:
+##
+## d8s2b4.arc4.leeds.ac.uk 1 slots
+##
+## Resources granted:
+##
+## h_vmem = 8G (per slot)
+## h_rt   = 48:00:00
+## disk   = 1G (per slot)
+
+[33mNextflow 25.04.1 is available - Please consider updating your version to it(B[m
+
+ N E X T F L O W   ~  version 24.10.6
+
+WARN: It appears you have never run this project before -- Option `-resume` is ignored
+Launching `rnaseq_pe.nf` [jolly_mcnulty] DSL2 - revision: 732c14138b
+
+==================================================================================================
+        ____ ____  __  __   ____        _ _      ____  _   _    _        ____             
+       / ___| __ )|  \/  | | __ ) _   _| | | __ |  _ \| \ | |  / \      / ___|  ___  __ _ 
+      | |  _|  _ \| |\/| | |  _ \| | | | | |/ / | |_) |  \| | / _ \ ____\___ \ / _ \/ _` |
+      | |_| | |_) | |  | | | |_) | |_| | |   <  |  _ <| |\  |/ ___ |________) |  __| (_| |
+       \____|____/|_|  |_| |____/ \__,_|_|_|\_\ |_| \_|_| \_/_/   \_\   |____/ \___|\__, |
+                                                                                       |_|
+==================================================================================================
+
+  ▸ Workflow Summary:
+
+    ▹ Quality Control
+       - FASTQC: Evaluate raw read quality.
+       - Trim Galore: Remove adapters and low-quality bases.
+
+    ▹ rRNA Removal
+       - SortMeRNA: Remove rRNA reads at the FASTQ level to reduce non-informative signal.
+
+    ▹ Reference Preparation
+       - GTF Filtering: Filter GTF annotation for relevant biotypes and generate BED for RSeQC.
+       - STAR Index: Generate STAR genome index tailored to read length.
+       - RSEM Reference: Prepare RSEM reference for quantification.
+
+    ▹ Alignment & Quantification
+       - STAR: Align reads to genome and transcriptome using STAR.
+       - RSEM: Quantify gene and isoform expression using RSEM.
+
+    ▹ Quality Assessment
+       - RSeQC: Assess strandedness, alignment quality, and read distribution.
+
+    ▹ Results Summary
+       - RSEM Merge: Combine gene and isoform expression estimates across all samples.
+       - MultiQC: Summarize QC metrics into a single HTML report.
+
+--------------------------------------------------------------------------------------------------
+
+  ▸ Key Parameters:
+
+    ▹ Executed By       : gdmn373
+    ▹ Run Date          : 2025-05-13 10:11 UTC
+
+    ▹ Config Profile    : standard
+    ▹ Read Type         : all_paired-end
+    ▹ Sample Sheet      : data/samplesheet.csv
+    ▹ Reference FASTA   : data/reference/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    ▹ GTF Annotation    : data/reference/Homo_sapiens.GRCh38.113.gtf
+
+                                                                Author: Bo Wang | Version: Beta
+==================================================================================================
+
+[-        ] PREPARE_GTF -
+
+[-        ] PREPARE_GTF           -
+[-        ] FASTQC_PE             -
+[-        ] TRIM_GALORE_PE        -
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+
+[-        ] PREPARE_GTF           -
+[-        ] FASTQC_PE             -
+[-        ] TRIM_GALORE_PE        -
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+[-        ] PREPARE_GTF           | 0 of 1
+[-        ] FASTQC_PE             | 0 of 5
+[-        ] TRIM_GALORE_PE        | 0 of 4
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+[-        ] PREPARE_GTF           | 0 of 1
+[-        ] FASTQC_PE             | 0 of 12
+[-        ] TRIM_GALORE_PE        | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (1)
+[-        ] PREPARE_GTF           | 0 of 1
+[-        ] FASTQC_PE             | 0 of 12
+[ce/150596] TRIM_GALORE_PE (2)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (2)
+[-        ] PREPARE_GTF           | 0 of 1
+[f5/ba687c] FASTQC_PE (2)         | 0 of 12
+[ce/150596] TRIM_GALORE_PE (2)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (3)
+[-        ] PREPARE_GTF           | 0 of 1
+[88/68d29c] FASTQC_PE (1)         | 0 of 12
+[ce/150596] TRIM_GALORE_PE (2)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (4)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[88/68d29c] FASTQC_PE (1)         | 0 of 12
+[ce/150596] TRIM_GALORE_PE (2)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (5)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[88/68d29c] FASTQC_PE (1)         | 0 of 12
+[e0/ad287d] TRIM_GALORE_PE (1)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (6)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[02/c71c61] FASTQC_PE (4)         | 0 of 12
+[e0/ad287d] TRIM_GALORE_PE (1)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (7)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[e5/1c193f] FASTQC_PE (3)         | 0 of 12
+[e0/ad287d] TRIM_GALORE_PE (1)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (8)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[e5/1c193f] FASTQC_PE (3)         | 0 of 12
+[0e/1f2513] TRIM_GALORE_PE (3)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (9)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[e5/1c193f] FASTQC_PE (3)         | 0 of 12
+[4d/999f3c] TRIM_GALORE_PE (4)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (10)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[3b/fe577c] FASTQC_PE (6)         | 0 of 12
+[4d/999f3c] TRIM_GALORE_PE (4)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (11)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[3b/fe577c] FASTQC_PE (6)         | 0 of 12
+[af/87b8c5] TRIM_GALORE_PE (5)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (12)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[3b/fe577c] FASTQC_PE (6)         | 0 of 12
+[fa/33aadb] TRIM_GALORE_PE (6)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (13)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[37/80a254] FASTQC_PE (5)         | 0 of 12
+[fa/33aadb] TRIM_GALORE_PE (6)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (14)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[0d/ea11d1] FASTQC_PE (7)         | 0 of 12
+[fa/33aadb] TRIM_GALORE_PE (6)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (15)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[0d/ea11d1] FASTQC_PE (7)         | 0 of 12
+[2e/7025ce] TRIM_GALORE_PE (8)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (16)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[0d/ea11d1] FASTQC_PE (7)         | 0 of 12
+[99/ee5b58] TRIM_GALORE_PE (7)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (17)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[0d/ea11d1] FASTQC_PE (7)         | 0 of 12
+[62/78ef2c] TRIM_GALORE_PE (9)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (18)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[67/cde8da] FASTQC_PE (8)         | 0 of 12
+[62/78ef2c] TRIM_GALORE_PE (9)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (19)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[2d/ec0a5a] FASTQC_PE (9)         | 0 of 12
+[62/78ef2c] TRIM_GALORE_PE (9)    | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (20)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[2d/ec0a5a] FASTQC_PE (9)         | 0 of 12
+[12/179592] TRIM_GALORE_PE (11)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (21)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[2d/ec0a5a] FASTQC_PE (9)         | 0 of 12
+[79/f5446b] TRIM_GALORE_PE (10)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (22)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[2d/ec0a5a] FASTQC_PE (9)         | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (23)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[45/420f52] FASTQC_PE (11)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (24)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[07/9ca0f5] FASTQC_PE (10)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 0 of 1
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        -
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (25)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            -
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[-        ] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (26)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[-        ] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[71/1449bf] FASTQC_PE (12)        | 0 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[88/68d29c] FASTQC_PE (1)         | 1 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[2d/ec0a5a] FASTQC_PE (9)         | 2 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[67/cde8da] FASTQC_PE (8)         | 3 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[0d/ea11d1] FASTQC_PE (7)         | 4 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[f5/ba687c] FASTQC_PE (2)         | 5 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[e5/1c193f] FASTQC_PE (3)         | 6 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[07/9ca0f5] FASTQC_PE (10)        | 7 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[45/420f52] FASTQC_PE (11)        | 8 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[02/c71c61] FASTQC_PE (4)         | 9 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[3b/fe577c] FASTQC_PE (6)         | 10 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[71/1449bf] FASTQC_PE (12)        | 11 of 12
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[e0/052141] TRIM_GALORE_PE (12)   | 0 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[e0/ad287d] TRIM_GALORE_PE (1)    | 1 of 12
+[-        ] SORTMERNA_PE          -
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (27)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[e0/ad287d] TRIM_GALORE_PE (1)    | 1 of 12
+[-        ] SORTMERNA_PE          | 0 of 1
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (28)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[e0/ad287d] TRIM_GALORE_PE (1)    | 1 of 12
+[81/458a95] SORTMERNA_PE (1)      | 0 of 1
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (28)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[99/ee5b58] TRIM_GALORE_PE (7)    | 3 of 12
+[81/458a95] SORTMERNA_PE (1)      | 0 of 3
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (29)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[99/ee5b58] TRIM_GALORE_PE (7)    | 3 of 12
+[ac/9df89e] SORTMERNA_PE (2)      | 0 of 3
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (30)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[99/ee5b58] TRIM_GALORE_PE (7)    | 3 of 12
+[42/7429e2] SORTMERNA_PE (3)      | 0 of 3
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (30)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[99/ee5b58] TRIM_GALORE_PE (7)    | 3 of 12
+[42/7429e2] SORTMERNA_PE (3)      | 0 of 3
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (30)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[2e/7025ce] TRIM_GALORE_PE (8)    | 4 of 12
+[42/7429e2] SORTMERNA_PE (3)      | 0 of 4
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (31)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[2e/7025ce] TRIM_GALORE_PE (8)    | 4 of 12
+[a3/7ca5a7] SORTMERNA_PE (4)      | 0 of 4
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (31)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[2e/7025ce] TRIM_GALORE_PE (8)    | 4 of 12
+[a3/7ca5a7] SORTMERNA_PE (4)      | 0 of 4
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (31)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[12/179592] TRIM_GALORE_PE (11)   | 5 of 12
+[a3/7ca5a7] SORTMERNA_PE (4)      | 0 of 5
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (32)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[12/179592] TRIM_GALORE_PE (11)   | 5 of 12
+[91/f5341e] SORTMERNA_PE (5)      | 0 of 5
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (32)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[79/f5446b] TRIM_GALORE_PE (10)   | 6 of 12
+[91/f5341e] SORTMERNA_PE (5)      | 0 of 6
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (33)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[79/f5446b] TRIM_GALORE_PE (10)   | 6 of 12
+[aa/688147] SORTMERNA_PE (6)      | 0 of 6
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (33)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[0e/1f2513] TRIM_GALORE_PE (3)    | 7 of 12
+[aa/688147] SORTMERNA_PE (6)      | 0 of 7
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (34)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[0e/1f2513] TRIM_GALORE_PE (3)    | 7 of 12
+[ad/fe4b15] SORTMERNA_PE (7)      | 0 of 7
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (34)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[e0/052141] TRIM_GALORE_PE (12)   | 8 of 12
+[ad/fe4b15] SORTMERNA_PE (7)      | 0 of 8
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (35)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[e0/052141] TRIM_GALORE_PE (12)   | 8 of 12
+[4b/c98658] SORTMERNA_PE (8)      | 0 of 8
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (35)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[e0/052141] TRIM_GALORE_PE (12)   | 8 of 12
+[4b/c98658] SORTMERNA_PE (8)      | 0 of 8
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (35)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[ce/150596] TRIM_GALORE_PE (2)    | 9 of 12
+[4b/c98658] SORTMERNA_PE (8)      | 0 of 9
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (36)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[ce/150596] TRIM_GALORE_PE (2)    | 9 of 12
+[67/a17568] SORTMERNA_PE (9)      | 0 of 9
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (36)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[ce/150596] TRIM_GALORE_PE (2)    | 9 of 12
+[67/a17568] SORTMERNA_PE (9)      | 0 of 9
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (36)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[fa/33aadb] TRIM_GALORE_PE (6)    | 10 of 12
+[67/a17568] SORTMERNA_PE (9)      | 0 of 10
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (37)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[fa/33aadb] TRIM_GALORE_PE (6)    | 10 of 12
+[7d/ee558b] SORTMERNA_PE (10)     | 0 of 10
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (37)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[fa/33aadb] TRIM_GALORE_PE (6)    | 10 of 12
+[7d/ee558b] SORTMERNA_PE (10)     | 0 of 10
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (37)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[af/87b8c5] TRIM_GALORE_PE (5)    | 11 of 12
+[7d/ee558b] SORTMERNA_PE (10)     | 0 of 11
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (38)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[af/87b8c5] TRIM_GALORE_PE (5)    | 11 of 12
+[ee/cd9463] SORTMERNA_PE (11)     | 0 of 11
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (38)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[ee/cd9463] SORTMERNA_PE (11)     | 0 of 12
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (39)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[63/407c39] SORTMERNA_PE (12)     | 0 of 12
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (39)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[63/407c39] SORTMERNA_PE (12)     | 0 of 12
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (39)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[63/407c39] SORTMERNA_PE (12)     | 0 of 12
+[c8/207771] STAR_INDEX            | 0 of 1
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (39)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[63/407c39] SORTMERNA_PE (12)     | 0 of 12
+[c8/207771] STAR_INDEX            | 1 of 1 ✔
+[-        ] STAR_ALIGN_PE         -
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (39)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)      | 1 of 12
+[c8/207771] STAR_INDEX            | 1 of 1 ✔
+[-        ] STAR_ALIGN_PE         | 0 of 1
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (40)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)      | 1 of 12
+[c8/207771] STAR_INDEX            | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)     | 0 of 1
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (40)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)      | 1 of 12
+[c8/207771] STAR_INDEX            | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)     | 0 of 1
+[-        ] RSEQC_STRANDEDNESS_PE -
+[-        ] RSEQC_BAMSTAT         -
+[-        ] RSEQC_DISTRIBUTION    -
+[-        ] RSEQC_DUPLICATION     -
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (40)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)      | 1 of 12
+[c8/207771] STAR_INDEX            | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)     | 1 of 1
+[-        ] RSEQC_STRANDEDNESS_PE | 0 of 1
+[-        ] RSEQC_BAMSTAT         | 0 of 1
+[-        ] RSEQC_DISTRIBUTION    | 0 of 1
+[-        ] RSEQC_DUPLICATION     | 0 of 1
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (41)
+[12/f73a54] PREPARE_GTF           | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)         | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)    | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)      | 1 of 12
+[c8/207771] STAR_INDEX            | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)     | 1 of 1
+[-        ] RSEQC_STRANDEDNESS_PE | 0 of 1
+[-        ] RSEQC_BAMSTAT         | 0 of 1
+[-        ] RSEQC_DISTRIBUTION    | 0 of 1
+[93/6126c0] RSEQC_DUPLICATION (1) | 0 of 1
+[33/625992] RSEM_REFERENCE        | 0 of 1
+[-        ] RSEM_QUANT_PE         -
+[-        ] RSEM_MERGE            -
+[-        ] MULTIQC               -
+
+executor >  sge (42)
+[12/f73a54] PREPARE_GTF            | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)          | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)     | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)       | 1 of 12
+[c8/207771] STAR_INDEX             | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)      | 1 of 1
+[-        ] RSEQC_STRANDEDNESS_PE  | 0 of 1
+[-        ] RSEQC_BAMSTAT          | 0 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1) | 0 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)  | 0 of 1
+[33/625992] RSEM_REFERENCE         | 0 of 1
+[-        ] RSEM_QUANT_PE          -
+[-        ] RSEM_MERGE             -
+[-        ] MULTIQC                -
+
+executor >  sge (43)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)          | 1 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)         | 1 of 1
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 0 of 1
+[-        ] RSEQC_BAMSTAT             | 0 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 0 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 0 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (44)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)          | 1 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)         | 1 of 1
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 0 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 0 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 0 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 0 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (44)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)          | 1 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)         | 1 of 1
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 0 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 0 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 0 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 0 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (44)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)          | 1 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)         | 1 of 1
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 0 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 0 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 0 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (44)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)          | 1 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)         | 1 of 1
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 0 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 0 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (44)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)          | 1 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)         | 1 of 1
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 0 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (44)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[81/458a95] SORTMERNA_PE (1)          | 1 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)         | 1 of 1
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (44)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[ac/9df89e] SORTMERNA_PE (2)          | 2 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)         | 1 of 1
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (44)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[ac/9df89e] SORTMERNA_PE (2)          | 2 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[5e/e4e168] STAR_ALIGN_PE (1)         | 1 of 2
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (45)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[ac/9df89e] SORTMERNA_PE (2)          | 2 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 1 of 2
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (45)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[ac/9df89e] SORTMERNA_PE (2)          | 2 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 1 of 2
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (45)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 1 of 3
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (46)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 1 of 3
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (46)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 1 of 3
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 1
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 1
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 1
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 1
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (46)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 2 of 3
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 2
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 2
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 2
+[93/6126c0] RSEQC_DUPLICATION (1)     | 1 of 2
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (47)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 2 of 3
+[c1/4b3b2e] RSEQC_STRANDEDNESS_PE (1) | 1 of 2
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 2
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 2
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 1 of 2
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (48)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 2 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 1 of 2
+[6f/21c0a2] RSEQC_BAMSTAT (1)         | 1 of 2
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 2
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 1 of 2
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (49)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 2 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 1 of 2
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 1 of 2
+[2e/83e071] RSEQC_DISTRIBUTION (1)    | 1 of 2
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 1 of 2
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (50)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 2 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 1 of 2
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 1 of 2
+[42/edd115] RSEQC_DISTRIBUTION (2)    | 1 of 2
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 1 of 2
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (50)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 2 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 1 of 2
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 1 of 2
+[42/edd115] RSEQC_DISTRIBUTION (2)    | 1 of 2
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 1 of 2
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (50)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 2 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 2 of 2
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 1 of 2
+[42/edd115] RSEQC_DISTRIBUTION (2)    | 1 of 2
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 1 of 2
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (50)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[73/e12df1] STAR_ALIGN_PE (2)         | 2 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 2 of 2
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 1 of 2
+[42/edd115] RSEQC_DISTRIBUTION (2)    | 1 of 3
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 1 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (50)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 2 of 3
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 1 of 3
+[42/edd115] RSEQC_DISTRIBUTION (2)    | 1 of 3
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 1 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (51)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 2 of 3
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 1 of 3
+[42/edd115] RSEQC_DISTRIBUTION (2)    | 1 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 1 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (52)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 2 of 3
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 1 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 1 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 1 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (53)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/4b76e4] RSEQC_STRANDEDNESS_PE (2) | 2 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 1 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 1 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 1 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 2 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 1 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 1 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 1 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 2 of 3
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 2 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 1 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 1 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 2 of 3
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 2 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 1 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 1 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 2 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 1 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 1 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 2 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 1 of 3
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 2 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[59/d26e5b] RSEQC_BAMSTAT (2)         | 2 of 3
+[42/edd115] RSEQC_DISTRIBUTION (2)    | 2 of 3
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 2 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[42/edd115] RSEQC_DISTRIBUTION (2)    | 2 of 3
+[aa/3c1092] RSEQC_DUPLICATION (2)     | 2 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[42/edd115] RSEQC_DISTRIBUTION (2)    | 2 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[42/7429e2] SORTMERNA_PE (3)          | 3 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 3
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (54)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[a3/7ca5a7] SORTMERNA_PE (4)          | 4 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[8a/2f5291] STAR_ALIGN_PE (3)         | 3 of 4
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (55)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[a3/7ca5a7] SORTMERNA_PE (4)          | 4 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[4e/2e7192] STAR_ALIGN_PE (4)         | 3 of 4
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (55)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[a3/7ca5a7] SORTMERNA_PE (4)          | 4 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[4e/2e7192] STAR_ALIGN_PE (4)         | 3 of 4
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (55)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[91/f5341e] SORTMERNA_PE (5)          | 5 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[4e/2e7192] STAR_ALIGN_PE (4)         | 3 of 5
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (56)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[91/f5341e] SORTMERNA_PE (5)          | 5 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[25/dafd9a] STAR_ALIGN_PE (5)         | 3 of 5
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (56)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[91/f5341e] SORTMERNA_PE (5)          | 5 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[25/dafd9a] STAR_ALIGN_PE (5)         | 3 of 5
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (56)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[25/dafd9a] STAR_ALIGN_PE (5)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (57)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (57)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 0 of 1
+[-        ] RSEM_QUANT_PE             -
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (57)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[-        ] RSEM_QUANT_PE             | 0 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (58)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[-        ] RSEM_QUANT_PE             | 0 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (58)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[be/f818a0] RSEM_QUANT_PE (1)         | 0 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (59)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 0 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (60)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[46/6c27ae] RSEM_QUANT_PE (3)         | 0 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (60)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[46/6c27ae] RSEM_QUANT_PE (3)         | 0 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (60)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[aa/688147] SORTMERNA_PE (6)          | 6 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[be/f818a0] RSEM_QUANT_PE (1)         | 1 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (60)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[ad/fe4b15] SORTMERNA_PE (7)          | 7 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 6
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[be/f818a0] RSEM_QUANT_PE (1)         | 1 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (60)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[ad/fe4b15] SORTMERNA_PE (7)          | 7 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[03/5b0a64] STAR_ALIGN_PE (6)         | 3 of 7
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[be/f818a0] RSEM_QUANT_PE (1)         | 1 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (61)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[ad/fe4b15] SORTMERNA_PE (7)          | 7 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[4d/2981b8] STAR_ALIGN_PE (7)         | 3 of 7
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[be/f818a0] RSEM_QUANT_PE (1)         | 1 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (61)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[ad/fe4b15] SORTMERNA_PE (7)          | 7 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[4d/2981b8] STAR_ALIGN_PE (7)         | 3 of 7
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[be/f818a0] RSEM_QUANT_PE (1)         | 1 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (61)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[4b/c98658] SORTMERNA_PE (8)          | 8 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[4d/2981b8] STAR_ALIGN_PE (7)         | 3 of 8
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[be/f818a0] RSEM_QUANT_PE (1)         | 1 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (62)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[4b/c98658] SORTMERNA_PE (8)          | 8 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[3c/6fef1d] STAR_ALIGN_PE (8)         | 3 of 8
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[be/f818a0] RSEM_QUANT_PE (1)         | 1 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (62)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[4b/c98658] SORTMERNA_PE (8)          | 8 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[3c/6fef1d] STAR_ALIGN_PE (8)         | 3 of 8
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[46/6c27ae] RSEM_QUANT_PE (3)         | 2 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (62)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[4b/c98658] SORTMERNA_PE (8)          | 8 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[3c/6fef1d] STAR_ALIGN_PE (8)         | 3 of 8
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[46/6c27ae] RSEM_QUANT_PE (3)         | 2 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (62)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[7d/ee558b] SORTMERNA_PE (10)         | 9 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[3c/6fef1d] STAR_ALIGN_PE (8)         | 3 of 9
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[46/6c27ae] RSEM_QUANT_PE (3)         | 2 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (63)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[7d/ee558b] SORTMERNA_PE (10)         | 9 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[ca/1c16cf] STAR_ALIGN_PE (9)         | 3 of 9
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[46/6c27ae] RSEM_QUANT_PE (3)         | 2 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (63)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[7d/ee558b] SORTMERNA_PE (10)         | 9 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[ca/1c16cf] STAR_ALIGN_PE (9)         | 3 of 9
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 3 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (63)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[7d/ee558b] SORTMERNA_PE (10)         | 9 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[ca/1c16cf] STAR_ALIGN_PE (9)         | 3 of 9
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 3 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (63)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[67/a17568] SORTMERNA_PE (9)          | 10 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[ca/1c16cf] STAR_ALIGN_PE (9)         | 3 of 10
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 3 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (64)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[67/a17568] SORTMERNA_PE (9)          | 10 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[90/cc93d2] STAR_ALIGN_PE (10)        | 3 of 10
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 3 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (64)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[67/a17568] SORTMERNA_PE (9)          | 10 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[90/cc93d2] STAR_ALIGN_PE (10)        | 3 of 10
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 3 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (64)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[63/407c39] SORTMERNA_PE (12)         | 11 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[90/cc93d2] STAR_ALIGN_PE (10)        | 3 of 11
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 3 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+executor >  sge (65)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[63/407c39] SORTMERNA_PE (12)         | 11 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[59/83aa15] STAR_ALIGN_PE (11)        | 3 of 11
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 3 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+
+
+executor >  sge (65)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[63/407c39] SORTMERNA_PE (12)         | 11 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[59/83aa15] STAR_ALIGN_PE (11)        | 3 of 11
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 3 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+ERROR ~ Error executing process > 'STAR_ALIGN_PE (9)'
+
+Caused by:
+  Process `STAR_ALIGN_PE (9)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  mkdir star_index
+  tar -xzf star_index.tar.gz -C star_index
+  
+  STAR --runThreadN 6 --runMode alignReads          --genomeDir star_index          --readFilesIn Camb4_R_1.non_rRNA.fastq.gz Camb4_R_2.non_rRNA.fastq.gz          --readFilesCommand zcat          --twopassMode Basic          --alignIntronMin 30          --outFilterType BySJout          --outFilterScoreMinOverLread 0.1          --outFilterMatchNminOverLread 0.1          --outFilterMismatchNoverReadLmax 0.04          --outSAMtype BAM SortedByCoordinate          --outFileNamePrefix Camb4_R_ \
+       --outSAMattributes All          --outSAMattrIHstart 0          --outMultimapperOrder Random          --outReadsUnmapped Fastx          --quantMode TranscriptomeSAM GeneCounts
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command wrapper:
+  ## Hosts assigned to job 7435836.1:
+  ##
+  ## d11s8b4.arc4.leeds.ac.uk 6 slots
+  ##
+  ## Resources granted:
+  ##
+  ## h_vmem = 12G (per slot)
+  ## h_rt   = 06:00:00
+  ## disk   = 20G (per slot)
+  
+                                                   tee: standard output: No space left on device
+  tee: .command.err: No space left on device
+  tee: write error
+
+Work dir:
+  /resstore/b0135/Users/bowang/rnaseq/work/ca/1c16cf6395fc70b5767cd1eb7e919b
+
+Container:
+  /resstore/b0135/Users/bowang/rnaseq/./containers/star_2.7.11b.sif
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+
+ -- Check '.nextflow.log' file for details
+
+executor >  sge (65)
+[12/f73a54] PREPARE_GTF               | 1 of 1 ✔
+[37/80a254] FASTQC_PE (5)             | 12 of 12 ✔
+[4d/999f3c] TRIM_GALORE_PE (4)        | 12 of 12 ✔
+[63/407c39] SORTMERNA_PE (12)         | 11 of 12
+[c8/207771] STAR_INDEX                | 1 of 1 ✔
+[ca/1c16cf] STAR_ALIGN_PE (9)         | 4 of 11, failed: 1
+[a5/7674a6] RSEQC_STRANDEDNESS_PE (3) | 3 of 3
+[6f/217d73] RSEQC_BAMSTAT (3)         | 3 of 3
+[83/6e806c] RSEQC_DISTRIBUTION (3)    | 3 of 3
+[18/5f8191] RSEQC_DUPLICATION (3)     | 3 of 3
+[33/625992] RSEM_REFERENCE            | 1 of 1 ✔
+[1f/8f21e3] RSEM_QUANT_PE (2)         | 3 of 3
+[-        ] RSEM_MERGE                -
+[-        ] MULTIQC                   -
+ERROR ~ Error executing process > 'STAR_ALIGN_PE (9)'
+
+Caused by:
+  Process `STAR_ALIGN_PE (9)` terminated with an error exit status (1)
+
+
+Command executed:
+
+  mkdir star_index
+  tar -xzf star_index.tar.gz -C star_index
+  
+  STAR --runThreadN 6 --runMode alignReads          --genomeDir star_index          --readFilesIn Camb4_R_1.non_rRNA.fastq.gz Camb4_R_2.non_rRNA.fastq.gz          --readFilesCommand zcat          --twopassMode Basic          --alignIntronMin 30          --outFilterType BySJout          --outFilterScoreMinOverLread 0.1          --outFilterMatchNminOverLread 0.1          --outFilterMismatchNoverReadLmax 0.04          --outSAMtype BAM SortedByCoordinate          --outFileNamePrefix Camb4_R_ \
+       --outSAMattributes All          --outSAMattrIHstart 0          --outMultimapperOrder Random          --outReadsUnmapped Fastx          --quantMode TranscriptomeSAM GeneCounts
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command wrapper:
+  ## Hosts assigned to job 7435836.1:
+  ##
+  ## d11s8b4.arc4.leeds.ac.uk 6 slots
+  ##
+  ## Resources granted:
+  ##
+  ## h_vmem = 12G (per slot)
+  ## h_rt   = 06:00:00
+  ## disk   = 20G (per slot)
+  
+                                                   tee: standard output: No space left on device
+  tee: .command.err: No space left on device
+  tee: write error
+
+Work dir:
+  /resstore/b0135/Users/bowang/rnaseq/work/ca/1c16cf6395fc70b5767cd1eb7e919b
+
+Container:
+  /resstore/b0135/Users/bowang/rnaseq/./containers/star_2.7.11b.sif
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+
+ -- Check '.nextflow.log' file for details
+WARN: Killing running tasks (8)
+

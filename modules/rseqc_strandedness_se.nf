@@ -28,9 +28,9 @@ process RSEQC_STRANDEDNESS_SE {
 
         if (diff_abs < 0.1)
             result = "none"
-        else if (f >= 0.8)
+        else if (f >= 0.75)
             result = "forward"
-        else if (r >= 0.8)
+        else if (r >= 0.75)
             result = "reverse"
         else
             result = "none"
