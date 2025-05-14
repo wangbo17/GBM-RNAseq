@@ -1,0 +1,5 @@
+Bootstrap: docker
+From: rocker/r-base:4.2.2
+
+%post
+    Rscript --no-save --no-restore --quiet -e "install.packages(c('readr', 'dplyr'), repos = 'https://cloud.r-project.org')"
