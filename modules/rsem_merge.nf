@@ -11,12 +11,12 @@ process RSEM_MERGE {
     path isoform_results
 
     output:
-    path "gene_expected_count_matrix.tsv"
-    path "gene_TPM_matrix.tsv"
-    path "gene_FPKM_matrix.tsv"
-    path "isoform_expected_count_matrix.tsv"
-    path "isoform_TPM_matrix.tsv"
-    path "isoform_FPKM_matrix.tsv"
+    path "gene_expected_count_matrix.csv"
+    path "gene_TPM_matrix.csv"
+    path "gene_FPKM_matrix.csv"
+    path "isoform_expected_count_matrix.csv"
+    path "isoform_TPM_matrix.csv"
+    path "isoform_FPKM_matrix.csv"
     
     script:
     """

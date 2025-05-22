@@ -51,9 +51,9 @@ read_matrix <- function(files, id_col) {
 }
 
 write_matrix <- function(matrix_list, prefix) {
-  write_tsv(matrix_list$expected_count, paste0(prefix, "_expected_count_matrix.tsv"))
-  write_tsv(matrix_list$TPM, paste0(prefix, "_TPM_matrix.tsv"))
-  write_tsv(matrix_list$FPKM, paste0(prefix, "_FPKM_matrix.tsv"))
+  write_csv(matrix_list$expected_count, paste0(prefix, "_expected_count_matrix.csv"))
+  write_csv(matrix_list$TPM, paste0(prefix, "_TPM_matrix.csv"))
+  write_csv(matrix_list$FPKM, paste0(prefix, "_FPKM_matrix.csv"))
 }
 
 write_matrix(read_matrix(gene_files, "gene_id"), "gene")

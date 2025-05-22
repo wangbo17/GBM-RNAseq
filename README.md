@@ -15,7 +15,7 @@
 </pre>
 
 ## Overview
-This pipeline performs comprehensive preprocessing, alignment, quantification, and quality control of RNA-seq data using modular Nextflow processes. It supports both paired-end and single-end reads and is containerized for reproducibility. The workflow integrates industry-standard tools including **FastQC**, **Trim Galore**, **SortMeRNA**, **STAR**, **RSEM**, and **RSeQC**, with summary reporting via **MultiQC**.
+GBM Bulk RNA-Seq is a bioinformatics pipeline designed for the analysis of glioblastoma (GBM) bulk RNA sequencing data. This pipeline performs comprehensive preprocessing, alignment, quantification, and quality control of RNA-seq data using modular Nextflow processes. It supports both paired-end and single-end reads and is containerized for reproducibility. The workflow integrates industry-standard tools including **FastQC**, **Trim Galore**, **SortMeRNA**, **STAR**, **RSEM**, and **RSeQC**, with summary reporting via **MultiQC**.
 
 ---
 
