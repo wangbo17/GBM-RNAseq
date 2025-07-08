@@ -3,7 +3,7 @@
 process STAR_INDEX {
     label 'process_high'
     
-    container "containers/star_2.7.11b.sif"
+    container "oras://community.wave.seqera.io/library/star:2.7.11b--84fcc19fdfab53a4"
     publishDir "results/star_index", mode: 'copy'
 
     input:

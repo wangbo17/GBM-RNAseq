@@ -3,7 +3,7 @@
 process RSEQC_STRANDEDNESS_SE {
     label 'process_low'
     
-    container 'containers/rseqc_5.0.4.sif'
+    container 'oras://community.wave.seqera.io/library/rseqc:5.0.4--0cc2bc1f76506c49'
     publishDir "results/infer_strandedness", mode: 'copy'
 
     input:

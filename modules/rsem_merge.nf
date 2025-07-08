@@ -3,7 +3,7 @@
 process RSEM_MERGE {
     label 'process_low'
     
-    container 'containers/r-readr_2.1.5_r-dplyr_1.1.4.sif'
+    container 'oras://community.wave.seqera.io/library/r-dplyr_r-readr:71c011f9534aeaa9'
     publishDir "results/rsem_expression", mode: 'copy'
 
     input:

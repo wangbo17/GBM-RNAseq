@@ -3,7 +3,7 @@
 process TRIM_GALORE_SE {
     label 'process_medium'
     
-    container "containers/trim-galore_0.6.10.sif"
+    container "oras://community.wave.seqera.io/library/trim-galore:0.6.10--bc38c9238980c80e"
     publishDir "results/trim_galore", mode: 'copy'
 
     input:

@@ -3,7 +3,7 @@
 process PREPARE_GTF {
     label 'process_low'
 
-    container 'containers/genepredtobed-gtftogenepred_469.sif'
+    container 'oras://community.wave.seqera.io/library/ucsc-genepredtobed_ucsc-gtftogenepred_gawk:7eed71c18c832ffb'
 
     input:
     path gtf_file

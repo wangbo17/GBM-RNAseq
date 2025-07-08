@@ -3,7 +3,7 @@
 process RSEQC_COVERAGE {
     label 'process_low'
 
-    container 'containers/rseqc_samtools_r-base.sif'
+    container 'oras://community.wave.seqera.io/library/rseqc_samtools_r-base:5296b9400db66b6c'
     publishDir "results/rseqc", mode: 'copy'
 
     input:

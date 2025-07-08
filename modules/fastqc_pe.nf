@@ -3,7 +3,7 @@
 process FASTQC_PE {
     label 'process_single'
 
-    container 'containers/fastqc_0.12.1.sif'
+    container 'oras://community.wave.seqera.io/library/fastqc:0.12.1--104d26ddd9519960'
     publishDir "results/fastqc", mode: 'copy'
 
     input:

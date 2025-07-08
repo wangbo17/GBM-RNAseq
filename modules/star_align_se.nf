@@ -3,7 +3,7 @@
 process STAR_ALIGN_SE {
     label 'process_high'
     
-    container "containers/star_2.7.11b.sif"
+    container "oras://community.wave.seqera.io/library/star:2.7.11b--84fcc19fdfab53a4"
     publishDir "results/star_align", mode: 'copy'
 
     input:

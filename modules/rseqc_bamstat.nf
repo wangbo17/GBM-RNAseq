@@ -3,7 +3,7 @@
 process RSEQC_BAMSTAT {
     label 'process_low'
     
-    container 'containers/rseqc_5.0.4_r-base_4.4.3.sif'
+    container 'oras://community.wave.seqera.io/library/rseqc_r-base:280f3a07db26195c'
     publishDir "results/rseqc", mode: 'copy'
 
     input:

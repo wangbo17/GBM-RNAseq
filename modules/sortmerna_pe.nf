@@ -3,7 +3,7 @@
 process SORTMERNA_PE {
     label 'process_high'
     
-    container 'containers/sortmerna_4.3.7.sif'
+    container 'oras://community.wave.seqera.io/library/sortmerna:4.3.7--5e99cfae38f7f1eb'
     publishDir "results/sortmerna", mode: 'copy'
 
     input:

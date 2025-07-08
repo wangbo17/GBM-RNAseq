@@ -3,7 +3,7 @@
 process RSEM_REFERENCE {
     label 'process_high'
     
-    container 'containers/rsem_1.3.3_star_2.7.11b.sif'
+    container 'oras://community.wave.seqera.io/library/rsem_star:8a0fe0c5e7aa01d5'
     publishDir "results/rsem_reference", mode: 'copy'
 
     input:
