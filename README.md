@@ -16,3 +16,8 @@
 
 ## Overview
 GBM RNA-Seq is a bioinformatics pipeline designed for the analysis of glioblastoma (GBM) bulk RNA sequencing (RNA-seq) data.
+
+## Workflow
+The workflow includes quality control, alignment, quantification, and summarization steps.
+
+![gbm-rnaseq](https://github.com/user-attachments/assets/ca31647a-dbf2-45cd-b7af-0a1ef8711d81)
