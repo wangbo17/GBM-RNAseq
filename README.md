@@ -29,3 +29,4 @@ This pipeline is part of a glioblastoma-specific workflow suite:
 - [GBM RNA-Seq](https://github.com/wangbo17/GBM-RNAseq)
 - [GBM ChIP-seq](https://github.com/wangbo17/GBM-ChIPseq)
 - [GBM CUT&RUN](https://github.com/wangbo17/GBM-CnR)
+- [GBM ATAC-Seq](https://github.com/wangbo17/GBM-ATACseq)
